@@ -1,1 +1,3 @@
 # 2018-a-qgis-gpl
+
+tady bude zadani...
