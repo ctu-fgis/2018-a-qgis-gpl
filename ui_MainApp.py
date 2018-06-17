@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_MainApp.ui'
 #
-# Created: Wed May 18 13:55:50 2016
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Sun Jun 17 16:18:19 2018
+#      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -50,7 +50,7 @@ class Ui_MainApp(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollArea_5.setObjectName(_fromUtf8("scrollArea_5"))
         self.scrollAreaWidgetContents_5 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 409, 294))
+        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 411, 294))
         self.scrollAreaWidgetContents_5.setObjectName(_fromUtf8("scrollAreaWidgetContents_5"))
         self.gridLayout_11 = QtGui.QGridLayout(self.scrollAreaWidgetContents_5)
         self.gridLayout_11.setObjectName(_fromUtf8("gridLayout_11"))
@@ -143,11 +143,17 @@ class Ui_MainApp(object):
         font.setWeight(75)
         self.l_settings.setFont(font)
         self.l_settings.setObjectName(_fromUtf8("l_settings"))
-        self.gridLayout_12.addWidget(self.l_settings, 3, 0, 1, 1)
+        self.gridLayout_12.addWidget(self.l_settings, 5, 0, 1, 1)
         self.overwriteCheckBox = QtGui.QCheckBox(self.widget)
         self.overwriteCheckBox.setChecked(False)
         self.overwriteCheckBox.setObjectName(_fromUtf8("overwriteCheckBox"))
-        self.gridLayout_12.addWidget(self.overwriteCheckBox, 3, 1, 1, 1)
+        self.gridLayout_12.addWidget(self.overwriteCheckBox, 5, 1, 1, 1)
+        self.spolcheckBox = QtGui.QCheckBox(self.widget)
+        self.spolcheckBox.setObjectName(_fromUtf8("spolcheckBox"))
+        self.gridLayout_12.addWidget(self.spolcheckBox, 3, 1, 1, 1)
+        self.checkBox_2 = QtGui.QCheckBox(self.widget)
+        self.checkBox_2.setObjectName(_fromUtf8("checkBox_2"))
+        self.gridLayout_12.addWidget(self.checkBox_2, 4, 1, 1, 1)
         self.gridLayout_17.addLayout(self.gridLayout_12, 1, 0, 1, 1)
         self.labelLoading = QtGui.QLabel(self.widget)
         self.labelLoading.setText(_fromUtf8(""))
@@ -175,7 +181,7 @@ class Ui_MainApp(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollArea_6.setObjectName(_fromUtf8("scrollArea_6"))
         self.scrollAreaWidgetContents_6 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 269, 194))
+        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 271, 175))
         self.scrollAreaWidgetContents_6.setObjectName(_fromUtf8("scrollAreaWidgetContents_6"))
         self.gridLayout_16 = QtGui.QGridLayout(self.scrollAreaWidgetContents_6)
         self.gridLayout_16.setObjectName(_fromUtf8("gridLayout_16"))
@@ -272,7 +278,7 @@ class Ui_MainApp(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
         self.scrollAreaWidgetContents = QtGui.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 48, 28))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
         self.gridLayout_5 = QtGui.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setObjectName(_fromUtf8("gridLayout_5"))
@@ -290,7 +296,7 @@ class Ui_MainApp(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName(_fromUtf8("scrollArea_3"))
         self.scrollAreaWidgetContents_2 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 66, 28))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.scrollAreaWidgetContents_2.setObjectName(_fromUtf8("scrollAreaWidgetContents_2"))
         self.gridLayout_7 = QtGui.QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_7.setObjectName(_fromUtf8("gridLayout_7"))
@@ -308,7 +314,7 @@ class Ui_MainApp(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName(_fromUtf8("scrollArea_2"))
         self.scrollAreaWidgetContents_3 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 66, 28))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.scrollAreaWidgetContents_3.setObjectName(_fromUtf8("scrollAreaWidgetContents_3"))
         self.gridLayout_3 = QtGui.QGridLayout(self.scrollAreaWidgetContents_3)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
@@ -326,7 +332,7 @@ class Ui_MainApp(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollArea_4.setObjectName(_fromUtf8("scrollArea_4"))
         self.scrollAreaWidgetContents_4 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 66, 28))
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.scrollAreaWidgetContents_4.setObjectName(_fromUtf8("scrollAreaWidgetContents_4"))
         self.gridLayout_9 = QtGui.QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_9.setObjectName(_fromUtf8("gridLayout_9"))
@@ -442,6 +448,8 @@ class Ui_MainApp(object):
         self.l_settings.setText(_translate("MainApp", "Možnosti:", None))
         self.overwriteCheckBox.setToolTip(_translate("MainApp", "Přepiš stávající databázi SQLite", None))
         self.overwriteCheckBox.setText(_translate("MainApp", "Přepsat stávající databázi", None))
+        self.spolcheckBox.setText(_translate("MainApp", "Body polohy (SPOL)", None))
+        self.checkBox_2.setText(_translate("MainApp", "Nezapsané goemetrické plány (GPL)", None))
         self.loadVfkButton.setText(_translate("MainApp", "Načíst", None))
         self.label_4.setText(_translate("MainApp", "Hlavní databáze:", None))
         self.pb_mainDb.setText(_translate("MainApp", "Procházet", None))

@@ -48,7 +48,7 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>409</width>
+              <width>411</width>
               <height>294</height>
              </rect>
             </property>
@@ -247,7 +247,7 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="3" column="0">
+                  <item row="5" column="0">
                    <widget class="QLabel" name="l_settings">
                     <property name="minimumSize">
                      <size>
@@ -266,7 +266,7 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="3" column="1">
+                  <item row="5" column="1">
                    <widget class="QCheckBox" name="overwriteCheckBox">
                     <property name="toolTip">
                      <string>Přepiš stávající databázi SQLite</string>
@@ -276,6 +276,20 @@
                     </property>
                     <property name="checked">
                      <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QCheckBox" name="spolcheckBox">
+                    <property name="text">
+                     <string>Body polohy (SPOL)</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="QCheckBox" name="checkBox_2">
+                    <property name="text">
+                     <string>Nezapsané goemetrické plány (GPL)</string>
                     </property>
                    </widget>
                   </item>
@@ -327,8 +341,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>269</width>
-              <height>194</height>
+              <width>271</width>
+              <height>175</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_16">
@@ -489,7 +503,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>48</width>
+                  <width>98</width>
                   <height>28</height>
                  </rect>
                 </property>
@@ -515,7 +529,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>66</width>
+                  <width>98</width>
                   <height>28</height>
                  </rect>
                 </property>
@@ -541,7 +555,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>66</width>
+                  <width>98</width>
                   <height>28</height>
                  </rect>
                 </property>
@@ -567,7 +581,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>66</width>
+                  <width>98</width>
                   <height>28</height>
                  </rect>
                 </property>
