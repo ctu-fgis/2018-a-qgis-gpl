@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_MainApp.ui'
 #
-# Created: Sun Jun 17 16:18:19 2018
+# Created: Sun Jun 17 18:26:56 2018
 #      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -148,12 +148,12 @@ class Ui_MainApp(object):
         self.overwriteCheckBox.setChecked(False)
         self.overwriteCheckBox.setObjectName(_fromUtf8("overwriteCheckBox"))
         self.gridLayout_12.addWidget(self.overwriteCheckBox, 5, 1, 1, 1)
-        self.spolcheckBox = QtGui.QCheckBox(self.widget)
-        self.spolcheckBox.setObjectName(_fromUtf8("spolcheckBox"))
-        self.gridLayout_12.addWidget(self.spolcheckBox, 3, 1, 1, 1)
-        self.checkBox_2 = QtGui.QCheckBox(self.widget)
-        self.checkBox_2.setObjectName(_fromUtf8("checkBox_2"))
-        self.gridLayout_12.addWidget(self.checkBox_2, 4, 1, 1, 1)
+        self.spolCheckBox = QtGui.QCheckBox(self.widget)
+        self.spolCheckBox.setObjectName(_fromUtf8("spolCheckBox"))
+        self.gridLayout_12.addWidget(self.spolCheckBox, 3, 1, 1, 1)
+        self.gplCheckBox = QtGui.QCheckBox(self.widget)
+        self.gplCheckBox.setObjectName(_fromUtf8("gplCheckBox"))
+        self.gridLayout_12.addWidget(self.gplCheckBox, 4, 1, 1, 1)
         self.gridLayout_17.addLayout(self.gridLayout_12, 1, 0, 1, 1)
         self.labelLoading = QtGui.QLabel(self.widget)
         self.labelLoading.setText(_fromUtf8(""))
@@ -448,8 +448,8 @@ class Ui_MainApp(object):
         self.l_settings.setText(_translate("MainApp", "Možnosti:", None))
         self.overwriteCheckBox.setToolTip(_translate("MainApp", "Přepiš stávající databázi SQLite", None))
         self.overwriteCheckBox.setText(_translate("MainApp", "Přepsat stávající databázi", None))
-        self.spolcheckBox.setText(_translate("MainApp", "Body polohy (SPOL)", None))
-        self.checkBox_2.setText(_translate("MainApp", "Nezapsané goemetrické plány (GPL)", None))
+        self.spolCheckBox.setText(_translate("MainApp", "Body polohy (SPOL)", None))
+        self.gplCheckBox.setText(_translate("MainApp", "Nezapsané goemetrické plány (GPL)", None))
         self.loadVfkButton.setText(_translate("MainApp", "Načíst", None))
         self.label_4.setText(_translate("MainApp", "Hlavní databáze:", None))
         self.pb_mainDb.setText(_translate("MainApp", "Procházet", None))

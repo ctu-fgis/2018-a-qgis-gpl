@@ -280,14 +280,14 @@
                    </widget>
                   </item>
                   <item row="3" column="1">
-                   <widget class="QCheckBox" name="spolcheckBox">
+                   <widget class="QCheckBox" name="spolCheckBox">
                     <property name="text">
                      <string>Body polohy (SPOL)</string>
                     </property>
                    </widget>
                   </item>
                   <item row="4" column="1">
-                   <widget class="QCheckBox" name="checkBox_2">
+                   <widget class="QCheckBox" name="gplCheckBox">
                     <property name="text">
                      <string>Nezapsané goemetrické plány (GPL)</string>
                     </property>

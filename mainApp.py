@@ -59,6 +59,8 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
     class VfkLayer(object):
         Par = 0
         Bud = 1
+        Spol = 2
+        Gpl = 3
 
     def __init__(self, iface):
         QDockWidget.__init__(self, iface.mainWindow())
@@ -381,6 +383,16 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
             self.__loadVfkLayer('BUD')
         else:
             self.__unLoadVfkLayer('BUD')
+
+        if self.spolCheckBox.isChecked():
+                self.__loadVfkLayer('SPOL')
+        else:
+                self.__unLoadVfkLayer('SPOL')
+
+        if self.gplCheckBox.isChecked():
+                self.__loadVfkLayer('GPL')
+        else:
+                self.__unLoadVfkLayer('GPL')
 
         self.labelLoading.setText(u'Načítání souborů VFK bylo dokončeno.')
 
@@ -967,6 +979,8 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         self.pb_nextFile.setToolTip(u'Přidej další soubor VFK')
         self.parCheckBox.setToolTip(u'Načti vrstvu parcel')
         self.budCheckBox.setToolTip(u'Načti vrstvu budov')
+        self.spolCheckBox.setToolTip(u'Načti vrstvu body polohy')
+        self.gplCheckBox.setToolTip(u'Načti vrstvu geometricke plany')
 
         # add new VFK file
         self.pb_nextFile.clicked.connect(self.__addRowToGridLayout)
