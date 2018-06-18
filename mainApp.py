@@ -60,7 +60,9 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         Par = 0
         Bud = 1
         Spol = 2
+        """
         Gpl = 3
+        """
 
     def __init__(self, iface):
         QDockWidget.__init__(self, iface.mainWindow())
@@ -326,6 +328,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
 
         self.importThread = OpenThread(self.__fileName)
         self.importThread.working.connect(self.runLoadingLayer)
+
         if not self.importThread.isRunning():
             self.importThread.start()
 
@@ -388,12 +391,12 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
                 self.__loadVfkLayer('SPOL')
         else:
                 self.__unLoadVfkLayer('SPOL')
-
+        """
         if self.gplCheckBox.isChecked():
                 self.__loadVfkLayer('GPL')
         else:
                 self.__unLoadVfkLayer('GPL')
-
+        """
         self.labelLoading.setText(u'Načítání souborů VFK bylo dokončeno.')
 
     def vfkFileLineEdit_textChanged(self, arg1):
@@ -469,6 +472,8 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
             symbologyFile = ':/parStyle.qml'
         elif name == 'BUD':
             symbologyFile = ':/budStyle.qml'
+        elif name == 'SPOL':
+            symbologyFile = ':/spolStyle.qml'
 
         errorMsg, resultFlag = layer.loadNamedStyle(symbologyFile)
 
