@@ -448,7 +448,7 @@ class Ui_MainApp(object):
         self.l_settings.setText(_translate("MainApp", "Možnosti:", None))
         self.overwriteCheckBox.setToolTip(_translate("MainApp", "Přepiš stávající databázi SQLite", None))
         self.overwriteCheckBox.setText(_translate("MainApp", "Přepsat stávající databázi", None))
-        self.spolCheckBox.setText(_translate("MainApp", "Body polohy (SPOL)", None))
+        self.spolCheckBox.setText(_translate("MainApp", "Souřadnice polohy (SPOL)", None))
         self.gplCheckBox.setText(_translate("MainApp", "Nezapsané goemetrické plány (GPL)", None))
         self.loadVfkButton.setText(_translate("MainApp", "Načíst", None))
         self.label_4.setText(_translate("MainApp", "Hlavní databáze:", None))

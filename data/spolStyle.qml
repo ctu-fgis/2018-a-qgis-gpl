@@ -43,11 +43,7 @@
       <category render="true" symbol="0" value="1" label="m_xy = 0.04 m"/>
       <category render="true" symbol="1" value="2" label="m_xy = 0.08 m"/>
       <category render="true" symbol="2" value="3" label="m_xy = 0.14 m"/>
-      <category render="true" symbol="3" value="4" label="m_xy = 0.26 m"/>
-      <category render="true" symbol="4" value="5" label="m_xy = 0.50 m"/>
-      <category render="true" symbol="5" value="6" label="dig. z 1 : 1000"/>
-      <category render="true" symbol="6" value="7" label="dig. z 1 : 2000"/>
-      <category render="true" symbol="7" value="" label="dig. z 1 : 2880"/>
+      <category render="true" symbol="3" value="" label="neměřené"/>
     </categories>
     <symbols>
       <symbol alpha="1" clip_to_extent="1" type="marker" name="0">
@@ -137,94 +133,6 @@
         </layer>
       </symbol>
       <symbol alpha="1" clip_to_extent="1" type="marker" name="3">
-        <layer pass="0" class="SimpleMarker" locked="0">
-          <prop k="angle" v="0"/>
-          <prop k="color" v="232,237,61,255"/>
-          <prop k="horizontal_anchor_point" v="1"/>
-          <prop k="joinstyle" v="bevel"/>
-          <prop k="name" v="circle"/>
-          <prop k="offset" v="0,0"/>
-          <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="offset_unit" v="Pixel"/>
-          <prop k="outline_color" v="0,0,0,255"/>
-          <prop k="outline_style" v="solid"/>
-          <prop k="outline_width" v="0"/>
-          <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="outline_width_unit" v="Pixel"/>
-          <prop k="scale_method" v="diameter"/>
-          <prop k="size" v="5"/>
-          <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="size_unit" v="Pixel"/>
-          <prop k="vertical_anchor_point" v="1"/>
-        </layer>
-      </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" name="4">
-        <layer pass="0" class="SimpleMarker" locked="0">
-          <prop k="angle" v="0"/>
-          <prop k="color" v="168,56,114,255"/>
-          <prop k="horizontal_anchor_point" v="1"/>
-          <prop k="joinstyle" v="bevel"/>
-          <prop k="name" v="circle"/>
-          <prop k="offset" v="0,0"/>
-          <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="offset_unit" v="Pixel"/>
-          <prop k="outline_color" v="0,0,0,255"/>
-          <prop k="outline_style" v="solid"/>
-          <prop k="outline_width" v="0"/>
-          <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="outline_width_unit" v="Pixel"/>
-          <prop k="scale_method" v="diameter"/>
-          <prop k="size" v="5"/>
-          <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="size_unit" v="Pixel"/>
-          <prop k="vertical_anchor_point" v="1"/>
-        </layer>
-      </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" name="5">
-        <layer pass="0" class="SimpleMarker" locked="0">
-          <prop k="angle" v="0"/>
-          <prop k="color" v="254,0,0,255"/>
-          <prop k="horizontal_anchor_point" v="1"/>
-          <prop k="joinstyle" v="bevel"/>
-          <prop k="name" v="circle"/>
-          <prop k="offset" v="0,0"/>
-          <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="offset_unit" v="Pixel"/>
-          <prop k="outline_color" v="0,0,0,255"/>
-          <prop k="outline_style" v="solid"/>
-          <prop k="outline_width" v="0"/>
-          <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="outline_width_unit" v="Pixel"/>
-          <prop k="scale_method" v="diameter"/>
-          <prop k="size" v="5"/>
-          <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="size_unit" v="Pixel"/>
-          <prop k="vertical_anchor_point" v="1"/>
-        </layer>
-      </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" name="6">
-        <layer pass="0" class="SimpleMarker" locked="0">
-          <prop k="angle" v="0"/>
-          <prop k="color" v="222,133,141,255"/>
-          <prop k="horizontal_anchor_point" v="1"/>
-          <prop k="joinstyle" v="bevel"/>
-          <prop k="name" v="circle"/>
-          <prop k="offset" v="0,0"/>
-          <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="offset_unit" v="Pixel"/>
-          <prop k="outline_color" v="0,0,0,255"/>
-          <prop k="outline_style" v="solid"/>
-          <prop k="outline_width" v="0"/>
-          <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="outline_width_unit" v="Pixel"/>
-          <prop k="scale_method" v="diameter"/>
-          <prop k="size" v="5"/>
-          <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
-          <prop k="size_unit" v="Pixel"/>
-          <prop k="vertical_anchor_point" v="1"/>
-        </layer>
-      </symbol>
-      <symbol alpha="1" clip_to_extent="1" type="marker" name="7">
         <layer pass="0" class="SimpleMarker" locked="0">
           <prop k="angle" v="0"/>
           <prop k="color" v="236,236,236,255"/>
@@ -330,9 +238,9 @@
     <property key="labeling/dist" value="0"/>
     <property key="labeling/distInMapUnits" value="false"/>
     <property key="labeling/distMapUnitScale" value="0,0,0,0,0,0"/>
-    <property key="labeling/drawLabels" value="false"/>
-    <property key="labeling/enabled" value="false"/>
-    <property key="labeling/fieldName" value=""/>
+    <property key="labeling/drawLabels" value="true"/>
+    <property key="labeling/enabled" value="true"/>
+    <property key="labeling/fieldName" value="ID"/>
     <property key="labeling/fitInPolygonOnly" value="false"/>
     <property key="labeling/fontCapitals" value="0"/>
     <property key="labeling/fontFamily" value="MS Shell Dlg 2"/>
@@ -349,7 +257,7 @@
     <property key="labeling/fontWeight" value="50"/>
     <property key="labeling/fontWordSpacing" value="0"/>
     <property key="labeling/formatNumbers" value="false"/>
-    <property key="labeling/isExpression" value="true"/>
+    <property key="labeling/isExpression" value="false"/>
     <property key="labeling/labelOffsetInMapUnits" value="true"/>
     <property key="labeling/labelOffsetMapUnitScale" value="0,0,0,0,0,0"/>
     <property key="labeling/labelPerPart" value="false"/>
@@ -476,6 +384,7 @@
   <SingleCategoryDiagramRenderer diagramType="Histogram" sizeLegend="0" attributeLegend="1">
     <DiagramCategory penColor="#000000" labelPlacementMethod="XHeight" penWidth="0" diagramOrientation="Up" sizeScale="0,0,0,0,0,0" minimumSize="0" barWidth="5" penAlpha="255" maxScaleDenominator="1e+08" backgroundColor="#ffffff" transparency="0" width="15" scaleDependency="Area" backgroundAlpha="255" angleOffset="1440" scaleBasedVisibility="0" enabled="0" height="15" lineSizeScale="0,0,0,0,0,0" sizeType="MM" lineSizeType="MM" minScaleDenominator="inf">
       <fontProperties description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" style=""/>
+      <attribute field="" color="#000000" label=""/>
     </DiagramCategory>
     <symbol alpha="1" clip_to_extent="1" type="marker" name="sizeSymbol">
       <layer pass="0" class="SimpleMarker" locked="0">
@@ -501,7 +410,7 @@
     </symbol>
   </SingleCategoryDiagramRenderer>
   <DiagramLayerSettings yPosColumn="-1" showColumn="-1" linePlacementFlags="10" placement="0" dist="0" xPosColumn="-1" priority="0" obstacle="0" zIndex="0" showAll="1"/>
-  <annotationform></annotationform>
+  <annotationform>.</annotationform>
   <aliases>
     <alias field="ID" index="0" name=""/>
     <alias field="STAV_DAT" index="1" name=""/>
@@ -536,10 +445,10 @@
       <column width="-1" hidden="1" type="actions"/>
     </columns>
   </attributetableconfig>
-  <editform></editform>
+  <editform>.</editform>
   <editforminit/>
   <editforminitcodesource>0</editforminitcodesource>
-  <editforminitfilepath></editforminitfilepath>
+  <editforminitfilepath>.</editforminitfilepath>
   <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
 """
 QGIS forms can have a Python function that is called when the form is

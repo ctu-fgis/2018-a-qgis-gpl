@@ -984,8 +984,8 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         self.pb_nextFile.setToolTip(u'Přidej další soubor VFK')
         self.parCheckBox.setToolTip(u'Načti vrstvu parcel')
         self.budCheckBox.setToolTip(u'Načti vrstvu budov')
-        self.spolCheckBox.setToolTip(u'Načti vrstvu body polohy')
-        self.gplCheckBox.setToolTip(u'Načti vrstvu geometricke plany')
+        self.spolCheckBox.setToolTip(u'Načti vrstvu souřadnice polohy')
+        self.gplCheckBox.setToolTip(u'Načti vrstvu geometrické plány')
 
         # add new VFK file
         self.pb_nextFile.clicked.connect(self.__addRowToGridLayout)

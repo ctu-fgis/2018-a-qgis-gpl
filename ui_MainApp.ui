@@ -282,7 +282,7 @@
                   <item row="3" column="1">
                    <widget class="QCheckBox" name="spolCheckBox">
                     <property name="text">
-                     <string>Body polohy (SPOL)</string>
+                     <string>Souřadnice polohy (SPOL)</string>
                     </property>
                    </widget>
                   </item>
