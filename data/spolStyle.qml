@@ -37,6 +37,9 @@
     <edittype widgetv2type="TextEdit" name="CISLO_ZPMZ_MER">
       <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
     </edittype>
+    <edittype widgetv2type="TextEdit" name="CB">
+      <widgetv2config IsMultiline="0" fieldEditable="0" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+    </edittype>
   </edittypes>
   <renderer-v2 attr="KODCHB_KOD" forceraster="0" symbollevels="0" type="categorizedSymbol" enableorderby="0">
     <categories>
@@ -240,7 +243,7 @@
     <property key="labeling/distMapUnitScale" value="0,0,0,0,0,0"/>
     <property key="labeling/drawLabels" value="true"/>
     <property key="labeling/enabled" value="true"/>
-    <property key="labeling/fieldName" value="ID"/>
+    <property key="labeling/fieldName" value="to_string( &quot;CISLO_ZPMZ&quot; )+'-'+to_string(&quot;CISLO_BODU&quot;)"/>
     <property key="labeling/fitInPolygonOnly" value="false"/>
     <property key="labeling/fontCapitals" value="0"/>
     <property key="labeling/fontFamily" value="MS Shell Dlg 2"/>
@@ -257,7 +260,7 @@
     <property key="labeling/fontWeight" value="50"/>
     <property key="labeling/fontWordSpacing" value="0"/>
     <property key="labeling/formatNumbers" value="false"/>
-    <property key="labeling/isExpression" value="false"/>
+    <property key="labeling/isExpression" value="true"/>
     <property key="labeling/labelOffsetInMapUnits" value="true"/>
     <property key="labeling/labelOffsetMapUnitScale" value="0,0,0,0,0,0"/>
     <property key="labeling/labelPerPart" value="false"/>
@@ -424,11 +427,12 @@
     <alias field="KODCHB_KOD" index="9" name=""/>
     <alias field="KATUZE_KOD_MER" index="10" name=""/>
     <alias field="CISLO_ZPMZ_MER" index="11" name=""/>
+    <alias field="CB" index="12" name=""/>
   </aliases>
   <excludeAttributesWMS/>
   <excludeAttributesWFS/>
   <attributeactions default="-1"/>
-  <attributetableconfig actionWidgetStyle="dropDown" sortExpression="&quot;KODCHB_KOD&quot;" sortOrder="0">
+  <attributetableconfig actionWidgetStyle="dropDown" sortExpression="&quot;CISLO_ZPMZ&quot;" sortOrder="0">
     <columns>
       <column width="-1" hidden="0" type="field" name="ID"/>
       <column width="-1" hidden="0" type="field" name="STAV_DAT"/>
@@ -443,6 +447,7 @@
       <column width="-1" hidden="0" type="field" name="KATUZE_KOD_MER"/>
       <column width="-1" hidden="0" type="field" name="CISLO_ZPMZ_MER"/>
       <column width="-1" hidden="1" type="actions"/>
+      <column width="-1" hidden="0" type="field" name="CB"/>
     </columns>
   </attributetableconfig>
   <editform>.</editform>
@@ -486,6 +491,7 @@ def my_form_open(dialog, layer, feature):
     <default field="KODCHB_KOD" expression=""/>
     <default field="KATUZE_KOD_MER" expression=""/>
     <default field="CISLO_ZPMZ_MER" expression=""/>
+    <default field="CB" expression=""/>
   </defaults>
   <previewExpression>COALESCE( "ID", '&lt;NULL>' )</previewExpression>
   <layerGeometryType>0</layerGeometryType>
