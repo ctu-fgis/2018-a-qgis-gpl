@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from PyQt4.QtCore import QObject
+from PyQt4.QtCore import qDebug, QObject
 
 from vfkDocument import *
 from vfkTableModel import *
 from htmlDocument import *
 from domains import *
-from qgis.core import QgsMessageLog
-from qgis.gui import QgsMessageBar
-from qgis.utils import iface
+
 
 class Coordinates(object):
 
@@ -1363,7 +1361,8 @@ class DocumentBuilder:
         ok = model.searchJed(
             cisloJednotky, domovniCislo, naParcele, zpusobVyuziti, lv)
         if not ok:
-            iface.messageBar().pushWarning(u'\n(VFK) ERROR:',u' Nemohu najit danne jednotky, nekde se stala nejaka chyba')
+            qDebug(
+                "\n(VFK) ERROR: Nemohu najit danne jednotky, nekde se stala nejaka chyba")
             return
 
         ids = []
@@ -1582,7 +1581,7 @@ class DocumentBuilder:
 
         st = u''
         if not model.value(row, u"drupoz_stavebni_parcela"):
-            iface.messageBar().pushWarning(u'\n(VFK) ERROR:',u' neni drupoz_stavebni_parcela')
+            qDebug("\n(VFK) ERROR: neni drupoz_stavebni_parcela")
         if self.__mDveRadyCislovani and Domains.anoNe(model.value(row, u"drupoz_stavebni_parcela")):
             st = u"st."
 
