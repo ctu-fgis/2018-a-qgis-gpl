@@ -34,6 +34,7 @@ class SearchFormController(QObject):
         parcely = None
         budovy = None
         jednotky = None
+        spol = None
 
     class MainControls:
         formCombobox = None
@@ -45,6 +46,7 @@ class SearchFormController(QObject):
         Parcely = 1
         Budovy = 2
         Jednotky = 3
+        spol = 4
 
     # signals
     actionTriggered = pyqtSignal(QUrl)
@@ -73,6 +75,7 @@ class SearchFormController(QObject):
         self.__controls.formCombobox.addItem(u"parcely", self.Form.Parcely)
         self.__controls.formCombobox.addItem(u"budovy", self.Form.Budovy)
         self.__controls.formCombobox.addItem(u"jednotky", self.Form.Jednotky)
+        self.__controls.formCombobox.addItem(u"spol", self.Form.Spol)
 
         self.connect(
             self.__controls.formCombobox, SIGNAL(
@@ -108,6 +111,8 @@ class SearchFormController(QObject):
             self.__searchJednotky()
         elif int(self.__controls.formCombobox.itemData(self.__controls.formCombobox.currentIndex())) == self.Form.Vlastnici:
             self.__searchVlastnici()
+        elif int(self.__controls.formCombobox.itemData(self.__controls.formCombobox.currentIndex())) == self.Form.Spol:
+            self.__searchSpol()
         else:
             qDebug("Neplatna hodnota v SearchComboBoxu!!!")
 
@@ -166,6 +171,19 @@ class SearchFormController(QObject):
 
         url = QUrl(u"showText?page=search&type=jednotky&cisloJednotky={}&domovniCislo={}&naParcele={}&zpusobVyuziti={}&lv={}"
                    .format(cisloJednotky, domovniCislo, naParcele, zpusobVyuziti, lv))
+        self.actionTriggered.emit(url)
+
+    def __searchBudovy(self):
+        """
+
+        """
+        CisloKatastr = self.__forms.spol.CisloKatastr()
+        CisloZpmz = self.__forms.spol.CisloZpmz()
+        CisloBodu = self.__forms.spol.CisloBodu()
+        lv = self.__forms.spol.lv()
+
+        url = QUrl(u"showText?page=search&type=budovy&domovniCislo={}&naParcele={}&zpusobVyuziti={}"
+                   .format(CisloKatastr, CisloZpmz, CisloBodu))
         self.actionTriggered.emit(url)
 
     def __initComboBoxModels(self):

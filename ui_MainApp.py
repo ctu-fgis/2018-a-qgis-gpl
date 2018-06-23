@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_MainApp.ui'
 #
-# Created: Sun Jun 17 18:26:56 2018
+# Created: Sat Jun 23 16:30:29 2018
 #      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,6 +28,7 @@ class Ui_MainApp(object):
         MainApp.setObjectName(_fromUtf8("MainApp"))
         MainApp.resize(918, 332)
         MainApp.setLayoutDirection(QtCore.Qt.LeftToRight)
+        MainApp.setTabShape(QtGui.QTabWidget.Rounded)
         self.centralWidget = QtGui.QWidget(MainApp)
         self.centralWidget.setObjectName(_fromUtf8("centralWidget"))
         self.gridLayout_4 = QtGui.QGridLayout(self.centralWidget)
@@ -181,7 +182,7 @@ class Ui_MainApp(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollArea_6.setObjectName(_fromUtf8("scrollArea_6"))
         self.scrollAreaWidgetContents_6 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 271, 175))
+        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 411, 294))
         self.scrollAreaWidgetContents_6.setObjectName(_fromUtf8("scrollAreaWidgetContents_6"))
         self.gridLayout_16 = QtGui.QGridLayout(self.scrollAreaWidgetContents_6)
         self.gridLayout_16.setObjectName(_fromUtf8("gridLayout_16"))
@@ -270,6 +271,20 @@ class Ui_MainApp(object):
         self.verticalLayout_3.addLayout(self.horizontalLayout_4)
         self.searchForms = QtGui.QStackedWidget(self.searchPage)
         self.searchForms.setObjectName(_fromUtf8("searchForms"))
+        self.page_5 = QtGui.QWidget()
+        self.page_5.setObjectName(_fromUtf8("page_5"))
+        self.scrollArea_7 = QtGui.QScrollArea(self.page_5)
+        self.scrollArea_7.setGeometry(QtCore.QRect(0, 0, 411, 231))
+        self.scrollArea_7.setWidgetResizable(True)
+        self.scrollArea_7.setObjectName(_fromUtf8("scrollArea_7"))
+        self.scrollAreaWidgetContents_7 = QtGui.QWidget()
+        self.scrollAreaWidgetContents_7.setGeometry(QtCore.QRect(0, 0, 409, 229))
+        self.scrollAreaWidgetContents_7.setObjectName(_fromUtf8("scrollAreaWidgetContents_7"))
+        self.spolSearchForm = spolsearchform(self.scrollAreaWidgetContents_7)
+        self.spolSearchForm.setGeometry(QtCore.QRect(10, 10, 391, 211))
+        self.spolSearchForm.setObjectName(_fromUtf8("spolSearchForm"))
+        self.scrollArea_7.setWidget(self.scrollAreaWidgetContents_7)
+        self.searchForms.addWidget(self.page_5)
         self.page = QtGui.QWidget()
         self.page.setObjectName(_fromUtf8("page"))
         self.gridLayout = QtGui.QGridLayout(self.page)
@@ -278,7 +293,7 @@ class Ui_MainApp(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
         self.scrollAreaWidgetContents = QtGui.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 98, 28))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 393, 217))
         self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
         self.gridLayout_5 = QtGui.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setObjectName(_fromUtf8("gridLayout_5"))
@@ -296,7 +311,7 @@ class Ui_MainApp(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName(_fromUtf8("scrollArea_3"))
         self.scrollAreaWidgetContents_2 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 98, 28))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 393, 217))
         self.scrollAreaWidgetContents_2.setObjectName(_fromUtf8("scrollAreaWidgetContents_2"))
         self.gridLayout_7 = QtGui.QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_7.setObjectName(_fromUtf8("gridLayout_7"))
@@ -314,7 +329,7 @@ class Ui_MainApp(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName(_fromUtf8("scrollArea_2"))
         self.scrollAreaWidgetContents_3 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 98, 28))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 393, 217))
         self.scrollAreaWidgetContents_3.setObjectName(_fromUtf8("scrollAreaWidgetContents_3"))
         self.gridLayout_3 = QtGui.QGridLayout(self.scrollAreaWidgetContents_3)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
@@ -332,7 +347,7 @@ class Ui_MainApp(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollArea_4.setObjectName(_fromUtf8("scrollArea_4"))
         self.scrollAreaWidgetContents_4 = QtGui.QWidget()
-        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 98, 28))
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 393, 217))
         self.scrollAreaWidgetContents_4.setObjectName(_fromUtf8("scrollAreaWidgetContents_4"))
         self.gridLayout_9 = QtGui.QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_9.setObjectName(_fromUtf8("gridLayout_9"))
@@ -428,7 +443,7 @@ class Ui_MainApp(object):
         self.actionZpracujZmeny.setObjectName(_fromUtf8("actionZpracujZmeny"))
 
         self.retranslateUi(MainApp)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
         self.searchForms.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainApp)
 
@@ -493,9 +508,10 @@ class Ui_MainApp(object):
         self.actionZpracujZmeny.setToolTip(_translate("MainApp", "Aplikuj změny na stavová data", None))
         self.actionZpracujZmeny.setShortcut(_translate("MainApp", "Ctrl+A", None))
 
-from vlastniciSearchForm import VlastniciSearchForm
-from vfkTextBrowser import VfkTextBrowser
 from jednotkySearchForm import JednotkySearchForm
-from budovySearchForm import BudovySearchForm
+from vlastniciSearchForm import VlastniciSearchForm
 from parcelySearchForm import ParcelySearchForm
+from spolSearchForm import SpolSearchForm
+from vfkTextBrowser import VfkTextBrowser
+from budovySearchForm import BudovySearchForm
 import resources_rc

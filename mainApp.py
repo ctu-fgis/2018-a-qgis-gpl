@@ -33,6 +33,11 @@ from qgis.core import *
 from qgis.gui import *
 from osgeo import ogr, gdal
 import time
+from qgis.core import QgsMessageLog
+from qgis.gui import QgsMessageBar
+from qgis.utils import iface
+import os
+
 
 from ui_MainApp import Ui_MainApp
 from searchFormController import *
@@ -60,9 +65,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         Par = 0
         Bud = 1
         Spol = 2
-        """
-        Gpl = 3
-        """
+
 
     def __init__(self, iface):
         QDockWidget.__init__(self, iface.mainWindow())
@@ -118,6 +121,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         self.searchForms.parcely = self.parcelySearchForm
         self.searchForms.budovy = self.budovySearchForm
         self.searchForms.jednotky = self.jednotkySearchForm
+        self.searchForms.spol = self.spojSearchForm
 
         # search form controller
         self.__mSearchController = SearchFormController(
@@ -130,6 +134,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
 
         self.connect(self.vfkBrowser, SIGNAL("showParcely"), self.showParInMap)
         self.connect(self.vfkBrowser, SIGNAL("showBudovy"), self.showBudInMap)
+        self.connect(self.vfkBrowser, SIGNAL("showSpol"), self.showSpolInMap)
 
         # connect lineEdits and returnPressed action
         self.connect(self.vfkFileLineEdit, SIGNAL(
@@ -160,6 +165,13 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         self.connect(self.jednotkySearchForm.ui.mNaParceleLineEdit,
                      SIGNAL("returnPressed()"), self.__mSearchController.search)
         self.connect(self.jednotkySearchForm.ui.mLvJednotkyLineEdit,
+                     SIGNAL("returnPressed()"), self.__mSearchController.search)
+
+        self.connect(self.spolSearchForm.ui.kuLineEdit,
+                     SIGNAL("returnPressed()"), self.__mSearchController.search)
+        self.connect(self.spolSearchForm.ui.zpmzLineEdit,
+                     SIGNAL("returnPressed()"), self.__mSearchController.search)
+        self.connect(self.spolSearchForm.ui.cbLineEdit,
                      SIGNAL("returnPressed()"), self.__mSearchController.search)
 
         self.vfkBrowser.showHelpPage()
@@ -214,6 +226,9 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
     def selectBudInMap(self):
         self.showInMap(self.vfkBrowser.currentBudIds(), "BUD")
 
+    def selectSpolInMap(self):
+        self.showInMap(self.vfkBrowser.currentBudIds(), "SPOL")
+
     def latexExport(self):
         fileName = QFileDialog.getSaveFileName(
             self, u"Jméno exportovaného souboru", ".tex", "LaTeX (*.tex)")
@@ -263,7 +278,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
             error = ''
             fIds = self.__search(vectorLayer, searchString, error)
             if error:
-                qDebug('\n (VFK) ERROR in showInMap: {}'.format(error))
+                iface.messageBar().pushWarning(u'\n (VFK) ERROR in showInMap: ',u'{}'.format(error))
                 return
             else:
                 vectorLayer.setSelectedFeatures(fIds)
@@ -297,7 +312,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
                 fIds.append(f.id())
             # check if there were errors during evaluating
             if search.hasEvalError():
-                qDebug('\n (VFK) Evaluate error: {}'.format(error))
+                iface.messageBar().pushWarning(u'\n (VFK) Evaluate error:',u' {}'.format(error))
                 break
 
         return fIds
@@ -391,12 +406,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
                 self.__loadVfkLayer('SPOL')
         else:
                 self.__unLoadVfkLayer('SPOL')
-        """
-        if self.gplCheckBox.isChecked():
-                self.__loadVfkLayer('GPL')
-        else:
-                self.__unLoadVfkLayer('GPL')
-        """
+
         self.labelLoading.setText(u'Načítání souborů VFK bylo dokončeno.')
 
     def vfkFileLineEdit_textChanged(self, arg1):
@@ -422,23 +432,24 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         :type vfkLayerName: str
         :return:
         """
-        qDebug("\n(VFK) Loading vfk layer {}".format(vfkLayerName))
+        QgsMessageLog.logMessage(u'\n(VFK) Loading vfk layer {}'.format(vfkLayerName))
         if vfkLayerName in self.__mLoadedLayers:
-            qDebug(
-                "\n(VFK) Vfk layer {} is already loaded".format(vfkLayerName))
+            iface.messageBar().pushWarning(u'\n(VFK)',u' Vfk layer {} is already loaded'.format(vfkLayerName))
             return
 
         composedURI = self.__mDataSourceName + "|layername=" + vfkLayerName
         layer = QgsVectorLayer(composedURI, vfkLayerName, "ogr")
         if not layer.isValid():
-            qDebug("\n(VFK) Layer failed to load!")
+            iface.messageBar().pushWarning(u'\n(VFK)',u' Layer failed to load!')
 
         self.__mLoadedLayers[vfkLayerName] = layer.id()
 
+        self.__setSymbology(layer)
         try:
             self.__setSymbology(layer)
         except VFKWarning as e:
-            QMessageBox.information(self, 'Load Style', e, QMessageBox.Ok)
+
+            iface.messageBar().pushWarning(u'\n(VFK) Vfk layer style', u' {} is not valued'.format(vfkLayerName))
 
         QgsMapLayerRegistry.instance().addMapLayer(layer)
 
@@ -448,11 +459,10 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         :type vfkLayerName: str
         :return:
         """
-        qDebug("\n(VFK) Unloading vfk layer {}".format(vfkLayerName))
+        QgsMessageLog.logMessage(u'\n(VFK) Unloading vfk layer {}'.format(vfkLayerName))
 
         if vfkLayerName not in self.__mLoadedLayers:
-            qDebug(
-                "\n(VFK) Vfk layer {} is already unloaded".format(vfkLayerName))
+            iface.messageBar().pushInfo(u'\n(VFK)',u' Vfk layer {} is already unloaded'.format(vfkLayerName))
             return
 
         QgsMapLayerRegistry.instance().removeMapLayer(
@@ -473,9 +483,11 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         elif name == 'BUD':
             symbologyFile = ':/budStyle.qml'
         elif name == 'SPOL':
-            symbologyFile = ':/spolStyle.qml'
+            symbologyFile = 'c:/Users/zahrada/.qgis2/python/plugins/2018-a-qgis-gpl/data/spolStyle.qml'
 
         errorMsg, resultFlag = layer.loadNamedStyle(symbologyFile)
+
+
 
         if not resultFlag:
             raise VFKWarning(u'Load style: {}'.format(errorMsg))
@@ -489,7 +501,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         :type dbPath: str
         :return:
         """
-        qDebug("\n(VFK) Open DB: {}".format(dbPath))
+        QgsMessageLog.logMessage(u'\n(VFK) Open DB: {}'.format(dbPath))
         if not QSqlDatabase.isDriverAvailable('QSQLITE'):
             raise VFKError(u'Databázový ovladač QSQLITE není dostupný.')
 
@@ -513,7 +525,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         # overwrite database
         if fileName == self.__fileName[0]:
             if self.overwriteCheckBox.isChecked():
-                qDebug('\n (VFK) Database will be overwritten')
+                iface.messageBar().pushInfo(u'\n (VFK)',u' Database will be overwritten')
                 os.environ['OGR_VFK_DB_OVERWRITE'] = '1'
 
         if self.__mOgrDataSource:
@@ -589,7 +601,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         return ids
 
     def showInfoAboutSelection(self):
-        layers = ["PAR", "BUD"]
+        layers = ["PAR", "BUD", "SPOL" ]
         layerIds = {}
         for layer in layers:
             if layer in self.__mLoadedLayers:
@@ -598,7 +610,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
                 layerIds[layer] = self.__selectedIds(vectorLayer)
 
         self.vfkBrowser.showInfoAboutSelection(
-            layerIds["PAR"], layerIds["BUD"])
+            layerIds["PAR"], layerIds["BUD"], layerIds["SPOL"])
 
     def showParInMap(self, ids):
         """
@@ -625,6 +637,19 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
             self.setSelectionChangedConnected(True)
         else:
             self.showInMap(ids, "BUD")
+
+    def showSpolInMap(self, ids):
+        """
+
+        :type ids: list
+        :return:
+        """
+        if self.actionShowInfoaboutSelection.isChecked():
+            self.setSelectionChangedConnected(False)
+            self.showInMap(ids, "SPOL")
+            self.setSelectionChangedConnected(True)
+        else:
+            self.showInMap(ids, "SPOL")
 
     def showOnCuzk(self):
         x = self.vfkBrowser.currentDefinitionPoint().first.split(".")[0]
