@@ -22,7 +22,10 @@
 """
 
 from PyQt4.QtSql import QSqlQueryModel, QSqlRecord, QSqlField, QSqlDatabase
-from PyQt4.QtCore import qDebug, QTime, QObject
+from PyQt4.QtCore import QTime, QObject
+from qgis.core import QgsMessageLog
+from qgis.gui import QgsMessageBar
+from qgis.utils import iface
 
 
 class VfkTableModel(QSqlQueryModel):
@@ -956,18 +959,20 @@ class VfkTableModel(QSqlQueryModel):
         t = QTime()
         t.start()
 
-        qDebug("\n(VFK) SQL: {}\n".format(query))
+        QgsMessageLog.logMessage(u'\n(VFK) SQL: {}\n'.format(query))
         self.setQuery(query, QSqlDatabase.database(self.__mConnectionName))
 
         while self.canFetchMore():
             self.fetchMore()
 
         if t.elapsed() > 500:
-            qDebug("\n(VFK) Time elapsed: {} ms\n".format(t.elapsed()))
+            QgsMessageLog.logMessage(u'\n(VFK) Time elapsed: {} ms\n'.format(t.elapsed()))
 
         if self.lastError().isValid():
-            qDebug('\n(VFK) SQL ERROR: {}'.format(self.lastError().text()))
-            return False
+            QgsMessageLog.logMessage(u'\n(VFK) SQL ERROR:',u'\n {} STATEMENT: {}'.format(self.lastError().text(), query))
+            iface.messageBar().pushWarning(u'\n(VFK) SQL ERROR:',u'\n {} STATEMENT: {}'.format(self.lastError().text(), query))
+
+        return False
 
         return True
 

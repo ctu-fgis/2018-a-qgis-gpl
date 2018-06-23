@@ -33,6 +33,11 @@ from qgis.core import *
 from qgis.gui import *
 from osgeo import ogr, gdal
 import time
+from qgis.core import QgsMessageLog
+from qgis.gui import QgsMessageBar
+from qgis.utils import iface
+import os
+
 
 from ui_MainApp import Ui_MainApp
 from searchFormController import *
@@ -263,7 +268,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
             error = ''
             fIds = self.__search(vectorLayer, searchString, error)
             if error:
-                qDebug('\n (VFK) ERROR in showInMap: {}'.format(error))
+                iface.messageBar().pushWarning(u'\n (VFK) ERROR in showInMap: ',u'{}'.format(error))
                 return
             else:
                 vectorLayer.setSelectedFeatures(fIds)
@@ -297,7 +302,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
                 fIds.append(f.id())
             # check if there were errors during evaluating
             if search.hasEvalError():
-                qDebug('\n (VFK) Evaluate error: {}'.format(error))
+                iface.messageBar().pushWarning(u'\n (VFK) Evaluate error:',u' {}'.format(error))
                 break
 
         return fIds
@@ -422,23 +427,24 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         :type vfkLayerName: str
         :return:
         """
-        qDebug("\n(VFK) Loading vfk layer {}".format(vfkLayerName))
+        QgsMessageLog.logMessage(u'\n(VFK) Loading vfk layer {}'.format(vfkLayerName))
         if vfkLayerName in self.__mLoadedLayers:
-            qDebug(
-                "\n(VFK) Vfk layer {} is already loaded".format(vfkLayerName))
+            iface.messageBar().pushWarning(u'\n(VFK)',u' Vfk layer {} is already loaded'.format(vfkLayerName))
             return
 
         composedURI = self.__mDataSourceName + "|layername=" + vfkLayerName
         layer = QgsVectorLayer(composedURI, vfkLayerName, "ogr")
         if not layer.isValid():
-            qDebug("\n(VFK) Layer failed to load!")
+            iface.messageBar().pushWarning(u'\n(VFK)',u' Layer failed to load!')
 
         self.__mLoadedLayers[vfkLayerName] = layer.id()
 
+        self.__setSymbology(layer)
         try:
             self.__setSymbology(layer)
         except VFKWarning as e:
-            QMessageBox.information(self, 'Load Style', e, QMessageBox.Ok)
+
+            iface.messageBar().pushWarning(u'\n(VFK) Vfk layer style', u' {} is not valued'.format(vfkLayerName))
 
         QgsMapLayerRegistry.instance().addMapLayer(layer)
 
@@ -448,11 +454,10 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         :type vfkLayerName: str
         :return:
         """
-        qDebug("\n(VFK) Unloading vfk layer {}".format(vfkLayerName))
+        QgsMessageLog.logMessage(u'\n(VFK) Unloading vfk layer {}'.format(vfkLayerName))
 
         if vfkLayerName not in self.__mLoadedLayers:
-            qDebug(
-                "\n(VFK) Vfk layer {} is already unloaded".format(vfkLayerName))
+            iface.messageBar().pushInfo(u'\n(VFK)',u' Vfk layer {} is already unloaded'.format(vfkLayerName))
             return
 
         QgsMapLayerRegistry.instance().removeMapLayer(
@@ -477,6 +482,8 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
 
         errorMsg, resultFlag = layer.loadNamedStyle(symbologyFile)
 
+        path = os.path.dirname(os.path.abspath(__file__))
+
         if not resultFlag:
             raise VFKWarning(u'Load style: {}'.format(errorMsg))
 
@@ -489,7 +496,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         :type dbPath: str
         :return:
         """
-        qDebug("\n(VFK) Open DB: {}".format(dbPath))
+        QgsMessageLog.logMessage(u'\n(VFK) Open DB: {}'.format(dbPath))
         if not QSqlDatabase.isDriverAvailable('QSQLITE'):
             raise VFKError(u'Databázový ovladač QSQLITE není dostupný.')
 
@@ -513,7 +520,7 @@ class MainApp(QDockWidget, QMainWindow, Ui_MainApp):
         # overwrite database
         if fileName == self.__fileName[0]:
             if self.overwriteCheckBox.isChecked():
-                qDebug('\n (VFK) Database will be overwritten')
+                iface.messageBar().pushInfo(u'\n (VFK)',u' Database will be overwritten')
                 os.environ['OGR_VFK_DB_OVERWRITE'] = '1'
 
         if self.__mOgrDataSource:
